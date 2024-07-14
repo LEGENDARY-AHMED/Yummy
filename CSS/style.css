@@ -1,0 +1,42 @@
+.loading{
+display: flex;
+}
+
+.logo {
+  width: 50px;
+}
+
+.side-nav {
+  left: -155px;
+}
+
+.links ul li {
+  top: 300px;
+  cursor: pointer;
+}
+
+.card{
+  cursor: pointer;
+}
+
+.card-body {
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  transition: all 400ms ease-out;
+  -webkit-transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -ms-transition: all 400ms ease-out;
+  -o-transition: all 400ms ease-out;
+}
+
+.card:hover .card-body {
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
