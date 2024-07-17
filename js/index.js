@@ -362,7 +362,7 @@ function displayhelp(x) {
 //ContactUs
 function ContactUs() {
   let box = "";
-
+  loading(false);
   box += `
   <div class="contact min-vh-100 d-flex justify-content-center align-items-center">
     <div class="container w-75 text-center">
@@ -412,6 +412,7 @@ function ContactUs() {
   document.getElementById("rowData").innerHTML = box;
   $("#search").addClass("d-none");
   $("#rowData").removeClass("d-none");
+  loading(true);
 }
 // end ContactUs
 function loading(x) {
