@@ -25,12 +25,8 @@ function displayHome(x) {
       </div>`;
   }
 
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
 }
 
 async function Meal(id) {
@@ -77,17 +73,14 @@ function displayMeal(x) {
               <a target="_blank" href="${x.strSource}" class="btn btn-success">Source</a>
                 <a target="_blank" href="${x.strYoutube}" class="btn btn-danger">Youtube</a>
             </div>`;
-
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  document.getElementById("rowData").innerHTML = box;
+  $("#search").addClass("d-none");
+  close();
 }
 Home();
 //serch
 function Search() {
+  loading(false);
   let box = "";
   $("#search").removeClass("d-none");
   box = `
@@ -98,13 +91,10 @@ function Search() {
             <input oninput="searchByLetter(this.value)" maxlength="1" class="form-control bg-transparent text-white" type="text" placeholder="Search By First Letter">
         </div>
     `;
-
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("search").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  document.getElementById("search").innerHTML = box;
+  $("#rowData").addClass("d-none");
+  close();
+  loading(true);
 }
 
 async function searchByLetter(search) {
@@ -119,6 +109,7 @@ async function searchByLetter(search) {
     loading(true);
   } catch (error) {
     Home();
+    $("#rowData").removeClass("d-none");
     loading(true);
   }
 }
@@ -133,6 +124,7 @@ async function searchByword(search) {
     loading(true);
   } catch (error) {
     Home();
+    $("#rowData").removeClass("d-none");
     loading(true);
   }
 }
@@ -152,12 +144,9 @@ function displaySearch(x) {
       </div>`;
   }
 
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#rowData").removeClass("d-none");
 }
 //end search
 
@@ -169,6 +158,7 @@ async function Category() {
   );
   let data = await response.json();
   displayCategory(data.categories);
+  $("#rowData").removeClass("d-none");
   loading(true);
 }
 
@@ -194,12 +184,9 @@ function displayCategory(x) {
         </div>`;
   }
 
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#rowData").removeClass("d-none");
 }
 
 async function Alphabet(id) {
@@ -232,12 +219,9 @@ function displayAlphabet(x) {
               </div>
       </div>`;
   }
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#rowData").removeClass("d-none");
 }
 //end Category
 
@@ -264,13 +248,9 @@ function displayArea(x) {
         </div>
         `;
   }
-
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#rowData").removeClass("d-none");
 }
 
 async function Tag(id) {
@@ -303,12 +283,8 @@ function displayTag(x) {
               </div>
       </div>`;
   }
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  document.getElementById("rowData").innerHTML = box;
+  close();
 }
 //end Area
 
@@ -342,12 +318,9 @@ function displayIngredient(x) {
         `;
   }
 
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#rowData").removeClass("d-none");
 }
 
 async function help(id) {
@@ -380,12 +353,9 @@ function displayhelp(x) {
               </div>
       </div>`;
   }
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#rowData").removeClass("d-none");
 }
 //end Ingredients
 
@@ -438,12 +408,10 @@ function ContactUs() {
     </div>
 </div>`;
 
-  $(".links ul li").animate({ top: "300px" }, 500);
-  $(".side-nav").animate({ left: "-155" }, 500, function () {
-    document.getElementById("rowData").innerHTML = box;
-  });
-  $(".menu").removeClass("fa-close");
-  $(".menu").addClass("fa-align-justify");
+  close();
+  document.getElementById("rowData").innerHTML = box;
+  $("#search").addClass("d-none");
+  $("#rowData").removeClass("d-none");
 }
 // end ContactUs
 function loading(x) {
@@ -461,7 +429,9 @@ function loading(x) {
 $(".menu").click(function () {
   if ($(".side-nav").css("left") == "-155px") {
     $(".side-nav").animate({ left: "0px" }, 500);
-    $(".links ul li").eq(0).animate({ top: "0px" }, 300, function () {
+    $(".links ul li")
+      .eq(0)
+      .animate({ top: "0px" }, 300, function () {
         $(".links ul li")
           .eq(1)
           .animate({ top: "0px" }, 300, function () {
@@ -482,9 +452,12 @@ $(".menu").click(function () {
     $(this).addClass("fa-close");
     $(this).removeClass("fa-align-justify");
   } else {
-    $(".links ul li").animate({ top: "300px" }, 500);
-    $(".side-nav").animate({ left: "-155" }, 500);
-    $(this).removeClass("fa-close");
-    $(this).addClass("fa-align-justify");
+    close();
   }
 });
+function close() {
+  $(".links ul li").animate({ top: "300px" }, 500);
+  $(".side-nav").animate({ left: "-155" }, 500);
+  $(".menu").removeClass("fa-close");
+  $(".menu").addClass("fa-align-justify");
+}
