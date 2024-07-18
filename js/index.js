@@ -42,6 +42,7 @@ async function Meal(id) {
 function displayMeal(x) {
   let box = "";
   let y = ``;
+  let Azooz = ``;
   for (let i = 1; i <= 20; i++) {
     if (x[`strIngredient${i}`] != "") {
       y += `<li class="alert alert-info m-2 p-1">${x[`strMeasure${i}`]} ${
@@ -49,6 +50,14 @@ function displayMeal(x) {
       }</li>`;
     }
   }
+ 
+  if (x.strTags != null) {
+    let tags = x.strTags.split(",");
+    for (let index = 0; index < tags.length; index++) {
+      Azooz += `<li class="alert alert-danger m-2 p-1">${tags[index]}</li>`;
+    }
+  }
+
   box += `
     <div class="col-md-4">
                 <img class="w-100 rounded-3" src="${x.strMealThumb}" alt="">
@@ -67,7 +76,7 @@ function displayMeal(x) {
                 <h3>Tags :</h3>
                <ul class="list-unstyled d-flex g-3 flex-wrap">
                     
-        <li class="alert alert-danger m-2 p-1">${x.strTags}</li>
+                ${Azooz}
                 </ul>
 
               <a target="_blank" href="${x.strSource}" class="btn btn-success">Source</a>
@@ -429,25 +438,11 @@ function loading(x) {
 $(".menu").click(function () {
   if ($(".side-nav").css("left") == "-155px") {
     $(".side-nav").animate({ left: "0px" }, 500);
-    $(".links ul li")
-      .eq(0)
-      .animate({ top: "0px" }, 300, function () {
-        $(".links ul li")
-          .eq(1)
-          .animate({ top: "0px" }, 300, function () {
-            $(".links ul li")
-              .eq(2)
-              .animate({ top: "0px" }, 300, function () {
-                $(".links ul li")
-                  .eq(3)
-                  .animate({ top: "0px" }, 300, function () {
-                    $(".links ul li")
-                      .eq(4)
-                      .animate({ top: "0px" }, 300, function () {});
-                  });
-              });
-          });
-      });
+    for (let index = 0; index < 5; index++) {
+      $(".links ul li")
+        .eq(index)
+        .animate({ top: "0px" }, 300 + index * 300);
+    }
 
     $(this).addClass("fa-close");
     $(this).removeClass("fa-align-justify");
