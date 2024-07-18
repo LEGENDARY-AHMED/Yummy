@@ -123,8 +123,7 @@ async function searchByword(search) {
     displaySearch(data.meals);
     loading(true);
   } catch (error) {
-    Home();
-    $("#rowData").removeClass("d-none");
+    $("#rowData").addClass("d-none");
     loading(true);
   }
 }
